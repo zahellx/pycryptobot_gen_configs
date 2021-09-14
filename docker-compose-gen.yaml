@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  gen_$SERVICE:
+    build:
+      context: .
+    container_name: $CONTAINER_NAME
+    volumes:
+      - ./market/GEN/config_$SERVICE.json:/app/config.json
+      - ./market/GEN/pycryptobot_$SERVICE.log:/app/pycryptobot.log
+      - ./market/GEN/graphs:/app/graphs
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+    deploy:
+      restart_policy:
+        condition: on-failure
