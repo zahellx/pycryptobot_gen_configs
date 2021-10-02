@@ -2,8 +2,9 @@ version: "3.9"
 
 services:
   gen_$SERVICE:
-    build:
-      context: .
+    # build:
+    #   context: .
+    image: bot
     container_name: $CONTAINER_NAME
     volumes:
       - ./market/GEN/config_$SERVICE.json:/app/config.json
